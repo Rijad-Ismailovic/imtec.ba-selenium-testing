@@ -34,8 +34,4 @@ public class BaseTest {
             webDriver.quit();
         }
     }
-
-    public void acceptCookies(){
-
-    }
 }
