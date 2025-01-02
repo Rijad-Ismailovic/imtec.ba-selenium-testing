@@ -9,7 +9,7 @@ import java.time.Duration;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+//@TestInstance(TestInstance.Lifecycle.PER_CLASS) ovo je bio error.
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class Test404Page extends BaseTest {
 
