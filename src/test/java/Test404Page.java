@@ -30,23 +30,36 @@ public class Test404Page extends BaseTest {
     public void test404PageDisplay() {
         webDriver.get(baseUrl + "nonexistent-page");
 
-        localWait.until(driver -> driver.findElement(By.tagName("h1")));  // Use localWait for waiting
-        String pageTitle = webDriver.findElement(By.tagName("h1")).getText();
-        assertTrue(pageTitle.contains("404") || pageTitle.contains("Not Found"), "Custom 404 message is not displayed!");
+        localWait.until(driver -> driver.findElement(By.xpath("//h4[contains(text(),'Izvinite zbog neprijatnosti.')]")));  // Use localWait for waiting
+        String pageTitle = webDriver.findElement(By.xpath("//h4[contains(text(),'Izvinite zbog neprijatnosti.')]")).getText();
+        assertTrue(pageTitle.contains("Izvinite zbog neprijatnosti."), "Stranica koju trazižite nije pronađena");
 
-        List<WebElement> goHomeLinks = webDriver.findElements(By.linkText("Go Home"));
-        assertTrue(goHomeLinks.size() > 0, "'Go Home' link is not displayed!");
+        WebElement goHomeIcon = webDriver.findElement(By.xpath("//img[@alt='Imtec web shop']"));
+        assertTrue(goHomeIcon.isDisplayed(), "Go Home icon is not displayed!");
+        goHomeIcon.click();
     }
 
     @Test
     @Order(2)
-    public void testGoHomeLinkFunctionality() {
+    public void testSearchFunctionality() {
         webDriver.get(baseUrl + "nonexistent-page");
 
-        localWait.until(driver -> driver.findElement(By.linkText("Go Home")));  // Use localWait for waiting
-        webDriver.findElement(By.linkText("Go Home")).click();
-        String currentUrl = webDriver.getCurrentUrl();
+        localWait.until(driver -> driver.findElement(By.cssSelector(".search-widget:nth-child(3) .tvcmssearch-words")));  // Use localWait for waiting
 
-        assertEquals(baseUrl, currentUrl, "Home page URL is incorrect!");
+        WebElement searchBar = webDriver.findElement(By.cssSelector(".search-widget:nth-child(3) .tvcmssearch-words"));
+        WebElement searchIcon =webDriver.findElement(By.cssSelector(".search-widget:nth-child(3) .tvsearch-header-display-full .material-icons"));
+
+        searchBar.sendKeys("Tastature");
+        searchIcon.click();
+
+        String thisUrl = webDriver.getCurrentUrl();
+        assertTrue(thisUrl.contains("search"), "Search doesn't work properly");
+
+        WebElement goHomeIcon = webDriver.findElement(By.xpath("//img[@alt='Imtec web shop']"));
+        assertTrue(goHomeIcon.isDisplayed(), "Go Home icon is not displayed!");
+        goHomeIcon.click();
+
+        String currentUrl = webDriver.getCurrentUrl();
+        assertTrue(currentUrl.equals(baseUrl), "Go home button doesn't work properly");
     }
 }
