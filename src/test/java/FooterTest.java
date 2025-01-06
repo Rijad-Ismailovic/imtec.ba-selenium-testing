@@ -15,8 +15,8 @@ public class FooterTest extends BaseTest { // ovaj zeza nekad radi cc-compliance
     @BeforeAll
     public static void login(){
         webDriver.get("https://imtec.ba/prijava-lscfl?back=my-account");
-        webDriver.findElement(By.name("email")).sendKeys("zetzolzar@gmail.com");
-        webDriver.findElement(By.name("password")).sendKeys("rijadarmin123");
+        webDriver.findElement(By.name("email")).sendKeys(testemail);
+        webDriver.findElement(By.name("password")).sendKeys(testpassword);
         webDriver.findElement(By.id("submit-login")).click();
         //webDriver.findElement(By.className("cc-compliance")).click();
 

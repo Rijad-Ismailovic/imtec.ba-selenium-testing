@@ -26,14 +26,14 @@ public class LoginTest extends BaseTest{
     @Order(7)
     @Test
     public void testValidCredentials() throws InterruptedException {
-        webDriver.findElement(By.name("email")).sendKeys("zetzolzar@gmail.com");
-        webDriver.findElement(By.name("password")).sendKeys("rijadarmin123");
+        webDriver.findElement(By.name("email")).sendKeys(testemail);
+        webDriver.findElement(By.name("password")).sendKeys(testpassword);
         Thread.sleep(1000);
         webDriver.findElement(By.id("submit-login")).click();
         Thread.sleep(1000);
 
         String fullName = webDriver.findElement(By.xpath("/html/body/main/div/header/div[2]/div[2]/div/div/div[3]/div/div[1]/div/div/div/button/span")).getText();
-        assertEquals("RijadArmin IsmaBuza", fullName);
+        assertEquals("svvt test", fullName);
         assertEquals("https://imtec.ba/moj-racun-lscfl", webDriver.getCurrentUrl());
     }
 
@@ -54,7 +54,7 @@ public class LoginTest extends BaseTest{
     @Test
     @Order(3)
     public void testMissingField() throws InterruptedException {
-        webDriver.findElement(By.name("email")).sendKeys("zetzolzar@gmail.com");
+        webDriver.findElement(By.name("email")).sendKeys(testemail);
         Thread.sleep(1000);
         webDriver.findElement(By.id("submit-login")).click();
         Thread.sleep(1000);
@@ -89,7 +89,7 @@ public class LoginTest extends BaseTest{
     @Order(6)
     public void testForgotPassword() throws InterruptedException {
         webDriver.findElement(By.linkText("Zaboravili ste lozinku?")).click();
-        webDriver.findElement(By.name("email")).sendKeys("zetzolzar@gmail.com");
+        webDriver.findElement(By.name("email")).sendKeys(testemail);
         webDriver.findElement(By.xpath("//*[text()='Pošalji novi link']")).click();
 
         String confirmationText = webDriver.findElement(By.xpath("//*[@id=\"content\"]/ul/li/p")).getText();
