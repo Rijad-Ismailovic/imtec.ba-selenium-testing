@@ -80,15 +80,12 @@ public class ProfileTest extends BaseTest{
 
         ime.sendKeys("svvt");
         prezime.sendKeys("test");
-<<<<<<< HEAD
-        email.sendKeys("zetzolzar@gmail.com");
-        lozinka.sendKeys("rijadarmin123");
-        nova_lozinka.sendKeys("rijadarmin123");
-=======
+
         email.sendKeys(testemail);
         lozinka.sendKeys(testpassword);
         nova_lozinka.sendKeys(testpassword);
->>>>>>> secondary
+
+
         js.executeScript("window.scrollTo(0, 500);");
         Thread.sleep(1000);
         webDriver.findElement(By.xpath("//*[@id=\"customer-form\"]/footer/button")).click();
