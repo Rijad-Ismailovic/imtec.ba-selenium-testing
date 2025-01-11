@@ -27,6 +27,7 @@ public class AreAllProductHyperXTest extends BaseTest {
     }
 
     @Test
+    @Order(1)
     public void testProducts() {
 
         WebElement HyperxProducts = webDriver.findElement(By.cssSelector(".col-xl-12:nth-child(1) .tvimage-lazy"));
@@ -115,4 +116,6 @@ public class AreAllProductHyperXTest extends BaseTest {
 
         }
     }
+
+
 }
