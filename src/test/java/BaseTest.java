@@ -17,6 +17,9 @@ public class BaseTest {
     Actions action = new Actions(webDriver);
     JavascriptExecutor js = (JavascriptExecutor) webDriver;
 
+    protected static String testemail = "zetzolzar@gmail.com";
+    protected static String testpassword = "rijadarmin123";
+
 
     @BeforeAll
     public static void setUp() {
