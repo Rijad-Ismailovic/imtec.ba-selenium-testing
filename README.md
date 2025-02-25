@@ -1,5 +1,5 @@
 # Testing imtec.ba using Selenium
-15 different test scenarios with a total of xx test cases
+15 different test scenarios with a total of 68 test cases
 
 ### Overview
 Test Scenarios:
